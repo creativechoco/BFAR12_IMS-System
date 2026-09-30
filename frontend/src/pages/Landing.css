@@ -1,0 +1,516 @@
+/* ── Page shell ─────────────────────────────────────── */
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/bg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* ── Dark overlay on bg image ────────────────────────── */
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* ── Main content stack ─────────────────────────────── */
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 4vh, 56px);
+  padding: clamp(18px, 6vh, 46px) clamp(16px, 4vw, 56px);
+  box-sizing: border-box;
+}
+
+/* ── Hero header ────────────────────────────────────── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(12px, 3vw, 18px);
+  color: #ffffff;
+  max-width: max(1080px, 100%);
+}
+
+.hero-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.hero-logos img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.45));
+  border-radius: 12px;
+}
+
+.hero-suptitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(186, 246, 219, 0.9);
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.65);
+}
+
+.hero-title1 {
+  margin: 0;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  text-shadow: 0 6px 22px rgba(0, 0, 0, 0.65);
+}
+
+/* ── Center the modal ────────────────────────────────── */
+.modal-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 5vw, 32px);
+}
+
+/* ── Glass modal card ────────────────────────────────── */
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(160deg, rgba(85, 141, 220, 0.92) 0%, rgba(11, 45, 108, 0.92) 100%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(121, 198, 255, 0.22);
+  border-radius: 36px;
+  padding: 52px 48px 44px;
+  box-shadow:
+    0 24px 70px rgba(3, 12, 28, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+
+.modal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 20% 0%, rgba(91, 188, 255, 0.28), transparent 58%),
+    radial-gradient(circle at 115% 50%, rgba(46, 235, 196, 0.18), transparent 55%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+/* ── Header ─────────────────────────────────────────── */
+.modal-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  z-index: 1;
+}
+
+.brand-logo {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #f5fbff;
+  letter-spacing: -0.6px;
+  line-height: 1.15;
+  text-shadow: 0 8px 26px rgba(0, 0, 0, 0.55);
+}
+
+.modal-sub {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(197, 226, 255, 0.78);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Tab bar ─────────────────────────────────────────── */
+.tab-bar {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(180, 221, 255, 0.25);
+  border-radius: 18px;
+  padding: 6px;
+  margin-bottom: 26px;
+  gap: 6px;
+}
+
+.tab-btn {
+  border: none;
+  background: transparent;
+  padding: 12px 0;
+  border-radius: 13px;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: all 0.22s ease;
+  letter-spacing: 0.03em;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #49b1ff, #1e5edc);
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(34, 125, 227, 0.35);
+}
+
+.tab-btn:not(.active):hover {
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* ── Form ────────────────────────────────────────────── */
+.modal-form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-hint {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(214, 235, 255, 0.68);
+  line-height: 1.55;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field-icon {
+  position: absolute;
+  left: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.field input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(168, 210, 255, 0.28);
+  border-radius: 16px;
+  color: #f2f8ff;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.field input::placeholder {
+  color: rgba(212, 229, 255, 0.45);
+}
+
+.field input:focus {
+  border-color: rgba(121, 198, 255, 0.75);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 0 4px rgba(64, 157, 255, 0.28);
+}
+
+.eye-btn {
+  position: absolute;
+  right: 16px;
+  border: none;
+  background: transparent;
+  color: rgba(186, 214, 255, 0.55);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.eye-btn:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Submit button ───────────────────────────────────── */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #49b1ff, #1e5edc);
+  color: #f5fbff;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: transform 0.15s ease, box-shadow 0.25s ease, filter 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  letter-spacing: 0.04em;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(30, 94, 220, 0.45);
+  filter: brightness(1.05);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+  filter: brightness(0.97);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ── Spinner ─────────────────────────────────────────── */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(73, 177, 255, 0.25);
+  border-top-color: #1e5edc;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Error message ───────────────────────────────────── */
+.form-error {
+  font-size: 13px;
+  color: #fecaca;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  padding: 9px 12px;
+  text-align: center;
+}
+
+/* ── Failure modal ────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 16, 32, 0.78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  backdrop-filter: blur(6px);
+}
+
+.fail-modal {
+  position: relative;
+  width: min(420px, calc(100% - 48px));
+  padding: 32px 32px 26px;
+  border-radius: 28px;
+  background: linear-gradient(160deg, rgba(29, 54, 102, 0.92), rgba(8, 25, 60, 0.94));
+  border: 1px solid rgba(123, 174, 255, 0.28);
+  box-shadow:
+    0 24px 60px rgba(4, 15, 40, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  display: grid;
+  gap: 22px;
+  color: #e6f1ff;
+}
+
+.fail-modal__icon {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 30%, rgba(255, 101, 101, 0.45), rgba(151, 32, 32, 0.3));
+  border: 1px solid rgba(255, 148, 148, 0.4);
+  color: #ff9b9b;
+  margin: 0 auto;
+  box-shadow: 0 18px 40px rgba(180, 0, 0, 0.2);
+}
+
+.fail-modal__content {
+  text-align: center;
+  display: grid;
+  gap: 8px;
+}
+
+.fail-modal__content h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.fail-modal__content p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(217, 233, 255, 0.86);
+}
+
+.fail-modal__actions {
+  display: flex;
+  justify-content: center;
+}
+
+.fail-modal__button {
+  border: none;
+  border-radius: 16px;
+  padding: 12px 28px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0d1f3d;
+  background: linear-gradient(135deg, #fcb0b0, #ff6666);
+  box-shadow: 0 18px 38px rgba(255, 90, 90, 0.35);
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.25s ease;
+}
+
+.fail-modal__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 46px rgba(255, 90, 90, 0.45);
+}
+
+.fail-modal__button:active {
+  transform: translateY(0);
+}
+
+/* ── Footer ─────────────────────────────────────────── */
+.modal-footer {
+  margin: 20px 0 0;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-logos {
+    gap: 16px;
+  }
+
+  .hero-logos img {
+    width: clamp(56px, 20vw, 84px);
+  }
+
+  .content {
+    gap: clamp(16px, 5vh, 40px);
+    padding: clamp(16px, 7vh, 36px) clamp(16px, 6vw, 40px);
+  }
+
+  .modal {
+    max-width: 460px;
+    padding: 44px 32px 36px;
+    border-radius: 32px;
+  }
+
+  .modal-title {
+    font-size: 28px;
+  }
+
+  .tab-btn {
+    padding: 11px 0;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 28px 20px 22px;
+    border-radius: 22px;
+  }
+
+  .modal-title {
+    font-size: 22px;
+  }
+}
+
+@media (max-height: 720px) {
+  .hero {
+    gap: 12px;
+  }
+
+  .hero-logos img {
+    width: clamp(60px, 18vh, 80px);
+  }
+
+  .hero-suptitle {
+    font-size: clamp(1rem, 3vh, 1.2rem);
+  }
+
+  .hero-title {
+    font-size: clamp(1.4rem, 4vh, 2rem);
+  }
+
+  .modal {
+    max-width: 440px;
+    padding: 38px 28px 32px;
+    border-radius: 28px;
+  }
+
+  .modal-form {
+    gap: 14px;
+  }
+
+  .field input {
+    padding: 14px 14px 14px 44px;
+  }
+
+  .submit-btn {
+    min-height: 50px;
+  }
+}

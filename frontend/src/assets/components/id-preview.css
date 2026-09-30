@@ -1,0 +1,9 @@
+/* Reserved for future non-inline overrides of the BFAR ID card.
+   Cards are rendered with inline styles to keep the printed layout
+   pixel-accurate across environments. */
+
+.bfar-id-card {
+  /* html2canvas friendly */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}

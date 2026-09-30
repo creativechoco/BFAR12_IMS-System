@@ -1,0 +1,339 @@
+/* ═══════════════════════════════════════════════════════════════
+   Admin · Add Employee Form
+   Mirrors the visual treatment of `@/assets/employee/id-generator.css`
+   but scoped under `.add-employee-form` so the styles do not collide
+   with the admin dashboard shell.
+   ═══════════════════════════════════════════════════════════════ */
+
+.add-employee-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── Form grid / labels ── */
+.add-employee-form .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 20px;
+}
+
+.add-employee-form .form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  color: #202d40;
+}
+
+.add-employee-form .form-grid label span {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 11px;
+  color: rgba(92, 112, 146, 0.78);
+}
+
+.add-employee-form .form-grid label.full {
+  grid-column: span 2;
+}
+
+/* ── Inputs / textarea / select ── */
+.add-employee-form .form-grid input,
+.add-employee-form .form-grid textarea,
+.add-employee-form .form-grid select {
+  border: 1px solid rgba(167, 183, 209, 0.75);
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: rgba(250, 251, 255, 0.96);
+  color: #1c2a3f;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.add-employee-form .form-grid textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.add-employee-form .form-grid select {
+  appearance: none;
+  padding-right: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235c7092' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+
+.add-employee-form .form-grid input:focus,
+.add-employee-form .form-grid textarea:focus,
+.add-employee-form .form-grid select:focus {
+  border-color: rgba(78, 124, 210, 0.88);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(120, 160, 238, 0.28);
+}
+
+/* Error state */
+.add-employee-form .form-grid .has-error,
+.add-employee-form .form-grid .has-error:focus {
+  border-color: rgba(220, 78, 78, 0.9);
+  box-shadow: 0 0 0 3px rgba(220, 78, 78, 0.2);
+}
+
+/* ── Form sections ── */
+.add-employee-form .form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(175, 192, 220, 0.55);
+}
+
+.add-employee-form .section-header {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #2b64d6;
+}
+
+.add-employee-form .section-header.emergency-header {
+  color: #c0392b;
+}
+
+.add-employee-form .form-section.emergency {
+  border-color: rgba(214, 140, 130, 0.55);
+  background: rgba(254, 246, 244, 0.7);
+}
+
+/* ── Photo upload ── */
+.add-employee-form .photo-upload-section {
+  display: flex;
+  justify-content: center;
+}
+
+.add-employee-form .photo-upload-area {
+  width: 200px;
+  height: 200px;
+  max-width: 100%;
+  border-radius: 20px;
+  border: 2px dashed rgba(120, 150, 200, 0.55);
+  background: rgba(246, 249, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.add-employee-form .photo-upload-area:hover {
+  border-color: rgba(78, 124, 210, 0.9);
+  background: rgba(238, 244, 255, 0.9);
+}
+
+.add-employee-form .photo-upload-area.has-error {
+  border-color: rgba(220, 78, 78, 0.9);
+  box-shadow: 0 0 0 3px rgba(220, 78, 78, 0.2);
+}
+
+.add-employee-form .photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(60, 84, 120, 0.8);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.add-employee-form .photo-placeholder .upload-glyph {
+  font-size: 22px;
+  color: rgba(60, 84, 120, 0.65);
+}
+
+.add-employee-form .photo-placeholder .photo-hint {
+  font-size: 11px;
+  color: rgba(80, 104, 140, 0.6);
+  letter-spacing: 0.02em;
+}
+
+/* Signature upload */
+.add-employee-form .signature-upload {
+  display: flex;
+  justify-content: center;
+}
+
+.add-employee-form .signature-upload-area {
+  width: 260px;
+  height: 140px;
+  max-width: 100%;
+  border-radius: 18px;
+  border: 2px dashed rgba(120, 150, 200, 0.55);
+  background: rgba(246, 249, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.add-employee-form .signature-upload-area:hover {
+  border-color: rgba(78, 124, 210, 0.9);
+  background: rgba(238, 244, 255, 0.9);
+}
+
+.add-employee-form .signature-upload-area.has-error {
+  border-color: rgba(220, 78, 78, 0.9);
+  box-shadow: 0 0 0 3px rgba(220, 78, 78, 0.2);
+}
+
+.add-employee-form .signature-preview-box {
+  position: relative;
+  width: 180px;
+  height: 90px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(120, 150, 200, 0.55);
+  background: #fff;
+}
+
+.add-employee-form .signature-preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.add-employee-form .photo-preview-box {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid rgba(120, 150, 200, 0.55);
+  background: #fff;
+}
+
+.add-employee-form .photo-preview-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.add-employee-form .remove-photo-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(192, 57, 43, 0.92);
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(192, 57, 43, 0.35);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .add-employee-form .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .add-employee-form .form-grid label.full {
+    grid-column: span 1;
+  }
+}
+
+/* ── Dark mode passthrough (when wrapped in .admin-dashboard.dark) ── */
+.admin-dashboard.dark .add-employee-form .form-section {
+  background: rgba(21, 30, 48, 0.7);
+  border-color: rgba(45, 59, 88, 0.85);
+}
+
+.admin-dashboard.dark .add-employee-form .form-section.emergency {
+  background: rgba(58, 29, 29, 0.4);
+  border-color: rgba(220, 78, 78, 0.45);
+}
+
+.admin-dashboard.dark .add-employee-form .form-grid label {
+  color: #e6ecf7;
+}
+
+.admin-dashboard.dark .add-employee-form .form-grid label span {
+  color: rgba(154, 168, 194, 0.9);
+}
+
+.admin-dashboard.dark .add-employee-form .form-grid input,
+.admin-dashboard.dark .add-employee-form .form-grid textarea,
+.admin-dashboard.dark .add-employee-form .form-grid select {
+  background: #111828;
+  color: #e6ecf7;
+  border-color: rgba(45, 59, 88, 0.9);
+}
+
+.admin-dashboard.dark .add-employee-form .form-grid input::placeholder,
+.admin-dashboard.dark .add-employee-form .form-grid textarea::placeholder,
+.admin-dashboard.dark .add-employee-form .form-grid select::placeholder {
+  color: rgba(154, 168, 194, 0.8);
+}
+
+.admin-dashboard.dark .add-employee-form .form-grid select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239aa8c2' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+}
+
+.admin-dashboard.dark .add-employee-form .photo-upload-area {
+  background: rgba(17, 24, 40, 0.7);
+  border-color: rgba(45, 59, 88, 0.9);
+  color: rgba(154, 168, 194, 0.9);
+}
+
+.admin-dashboard.dark .add-employee-form .photo-placeholder,
+.admin-dashboard.dark .add-employee-form .photo-placeholder .upload-glyph,
+.admin-dashboard.dark .add-employee-form .photo-placeholder .photo-hint {
+  color: rgba(154, 168, 194, 0.9);
+}
+
+.admin-dashboard.dark .add-employee-form .form-grid input:focus,
+.admin-dashboard.dark .add-employee-form .form-grid textarea:focus,
+.admin-dashboard.dark .add-employee-form .form-grid select:focus {
+  border-color: rgba(132, 168, 255, 0.9);
+  box-shadow: 0 0 0 3px rgba(132, 168, 255, 0.28);
+}
+
+.admin-dashboard.dark .add-employee-form .photo-upload-area:hover {
+  border-color: rgba(132, 168, 255, 0.9);
+  color: rgba(154, 168, 194, 0.9);
+}
+
+.admin-dashboard.dark .add-employee-form .form-grid input,
+.admin-dashboard.dark .add-employee-form .form-grid textarea,
+.admin-dashboard.dark .add-employee-form .form-grid select {
+  background: #111828;
+  color: #e6ecf7;
+  border-color: rgba(45, 59, 88, 0.9);
+}
+
+.admin-dashboard.dark .add-employee-form .form-grid select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239aa8c2' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+}
+
+.admin-dashboard.dark .add-employee-form .photo-upload-area {
+  background: rgba(17, 24, 40, 0.7);
+  border-color: rgba(45, 59, 88, 0.9);
+}
+
+.admin-dashboard.dark .add-employee-form .photo-placeholder,
+.admin-dashboard.dark .add-employee-form .photo-placeholder .upload-glyph,
+.admin-dashboard.dark .add-employee-form .photo-placeholder .photo-hint {
+  color: rgba(154, 168, 194, 0.9);
+}
