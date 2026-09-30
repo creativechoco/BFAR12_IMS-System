@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS company_id_system;
-USE company_id_system;
+CREATE DATABASE IF NOT EXISTS id_system;
+USE id_system;
 
 -- Admin users table
 CREATE TABLE IF NOT EXISTS users (
