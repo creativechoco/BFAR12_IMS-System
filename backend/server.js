@@ -6,7 +6,12 @@ const app = express();
 const PORT = 5000;
 
 // Enable CORS to allow frontend communication
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: false,
+}));
 app.use(express.json());
 
 // MySQL Connection Setup
